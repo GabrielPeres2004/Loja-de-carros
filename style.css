@@ -1,0 +1,286 @@
+* { 
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    font-family: "Poppins", sans-serif;
+}
+
+body{
+    background-color: #000;
+    color: #fff;
+    font-size: 16px;
+    overflow: hidden;
+}
+
+header{
+    position: fixed;
+    left: 50%;
+    width: 80vw;
+    transform: translateX(-50%);
+    display: grid;
+    align-items: center;
+    grid-template-columns: 1fr 600px;
+    gap: 10%;
+    z-index: 2;
+}
+
+nav ul{
+    display: flex;
+    justify-content: space-between;
+    gap: 100px;
+}
+
+nav ul li:hover{
+    scale: 1.1;
+    cursor: pointer;
+}
+
+header img{
+    width: 250px;
+}
+
+header img:hover{
+    scale: 1.1;
+}
+
+section{
+    background-image: radial-gradient(#7f3d93, #6d00d9);
+    height: 100vh;
+    position: relative;
+}
+
+section .list{
+    width: 70vw;
+    height: 100%;
+    margin: auto;
+    position: relative;
+}
+
+section .list::before{
+    content: "";
+    position: absolute;
+    height: 200px;
+    width: 100%;
+    top: 50%;
+    border-top: 1px solid #fff;
+}
+
+section .item{
+    position: absolute;
+    inset: 0;
+}
+
+section .car-image{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 70%;
+}
+
+section .car-image img{
+    width: 100%;
+    transform: rotate(-30deg);
+}
+
+section .car-image::before{
+    content: "";
+    position: absolute;
+    background-color: #000;
+    width: 100%;
+    height: 100px;
+    top: 150%;
+    left: 50px;
+    border: 50%;
+    filter: blur(50px);
+
+}
+
+section .content{
+    position: absolute;
+    right: 100px;
+    width: 70%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: end;
+    gap: 30px;
+}
+
+section .content .car-title{
+    font-weight: bold;
+}
+
+section .content h2{
+    font-size: 5em;
+    line-height: 2em;
+    font-family: "League Gothic", sans-serif;
+}
+
+section .content .description{
+    color: #d9d9d9;
+    font-size: 12px;
+    text-align: right;
+    max-width: 400px;
+}
+
+section .content .information{
+   border-radius: 30px;
+   height: 35px;
+   width: 120px;
+   font-size: 1em;
+   text-transform: uppercase;
+   letter-spacing: 2px; 
+   border: 2px solid #791fd3;
+   background-color: #beff1b;
+   color: #6d00d9;
+   font-weight: 500;
+   font-family: "League Gothic", sans-serif;
+   cursor: pointer;
+}
+
+
+
+section .indicators{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 200px;
+    width: 90vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    gap: 15px;
+}
+
+section .number{
+    font-size: 5em;
+    font-family: "League Gothic", sans-serif;
+}
+
+section .indicators ul{
+    display: flex;
+    gap: 10px;
+}
+
+section .indicators li{
+    width: 50px;
+    height: 5px;
+    background-color: #beff1b;
+    border-radius: 5px;
+    transition: 0.5s;
+}
+
+section .indicators .active{
+    background-color: #fff;
+}
+
+section .arrows{
+    width: 70vw;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -25px);
+    display: flex;
+    justify-content: space-between;
+}
+
+section .arrows button:nth-child(1) img{
+    transform: scale(-1);
+
+}
+
+section button{
+    top: 60%;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+}
+
+section button:hover{
+    background-color: #beff1b;
+}
+
+section button img {
+    width: 30px;
+    margin-top: 4px;
+    cursor: pointer;
+}
+
+section{
+
+
+    --calculate: 1;
+
+    & .list{
+
+
+        & .item{
+
+            transform: translateX(calc(100vw * var(--calculate)));
+            transition: 0.5s;
+            opacity: 0;
+
+            & .car-image{
+                & img{
+                    transform: rotate(0);
+                    transition: 0.5s;
+                    transition-delay: 0.3s;
+                }
+            }
+
+
+
+            & .content{
+
+                & .car-title, h2 , .description, .information{
+                    transform: translateX(calc(200px * var(--calculate)));
+                    transition: 0.7s;
+                    transition-delay: 0.3s;
+                    opacity: 0;
+
+                }
+
+                & h2{
+                    transition-delay: 0.5s;
+                }
+
+                & .description{
+                    transition-delay: 0.7s;
+                }
+
+
+                & .information{
+                    transition-delay: 0.9s;
+                }
+            }
+        }
+
+    & .active {
+
+            transform: translateX(0);
+            transition: 0.5s;
+            opacity: 1;
+
+            & .car-image{
+                & img{
+                    transform: rotate(-20deg);
+                }
+            }
+
+            
+            & .content{
+                & .car-title, h2 , .description, .information{
+                    transform: translateX(0);
+                    opacity: 1;
+
+                }
+            }
+        }
+            
+    }
+} 
